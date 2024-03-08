@@ -1,0 +1,25 @@
+Public Pages
+/
+/login
+/register
+/cars
+/cars/:id
+
+Dashboard Layout
+/admin
+/driver
+
+User Related Pages
+/request-car
+
+
+Common Pages
+loading
+error
+not found
+
+Components
+NavBar
+Footer
+Hero Section 
+3 Cards with Cars
