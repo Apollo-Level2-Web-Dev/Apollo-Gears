@@ -1,16 +1,10 @@
-"use client"
-import React from 'react'
+// app/page.tsx
+import {Button} from '@nextui-org/button'; 
 
-const Button = () => {
+export default function Page() {
   return (
-    <button
-      onClick={() => {
-        console.log("Buy Now");
-      }}
-    >
-      Client COmponent
-    </button>
-  );
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
 }
-
-export default Button
