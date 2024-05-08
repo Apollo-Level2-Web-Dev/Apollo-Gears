@@ -1,10 +1,8 @@
-import React from "react";
-import { Card, CardHeader, CardBody, Image, Button } from "@nextui-org/react";
+import { Card, CardBody, Image } from "@nextui-org/react";
 import NextImage from "next/image";
 import BannerButton from "./BannerButton";
 
 export default function Banner() {
-
   return (
     <Card className="py-4 flex" shadow="none">
       <CardBody className="overflow-visible py-2 ">

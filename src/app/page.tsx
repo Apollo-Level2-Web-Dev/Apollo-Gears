@@ -1,14 +1,11 @@
-import { Button} from "@nextui-org/react";
-import NavBar from "../components/ui/Navbar";
-import Banner from "@/components/ui/Banner";
-import TopRatedCars from "@/components/ui/TopRatedCars";
+import Banner from "@/components/pages/home/Banner";
+import TopRatedCars from "@/components/pages/cars/TopRatedCars";
 
 export default function Home() {
-  
   return (
-    <main >
-      <Banner/>
-      <TopRatedCars/>
+    <main>
+      <Banner />
+      <TopRatedCars />
     </main>
   );
 }

@@ -1,8 +1,8 @@
+import Footer from "@/components/pages/shared/Footer";
+import NavBar from "@/components/pages/shared/Navbar";
 import Providers from "@/lib/Providers";
 import type { Metadata } from "next";
 import "./globals.css";
-import NavBar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
 
 export const metadata: Metadata = {
   title: "Apollo Gears",

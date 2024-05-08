@@ -23,3 +23,90 @@ NavBar
 Footer
 Hero Section 
 3 Cards with Cars
+
+
+/**
+ * Car Data Structure
+ * name : string
+ * brand : string
+ * model : string
+ * image : string
+ * rating : number
+ * fuelType : ["Octane", "Hybrid", "Electric", "Diesel", "Petrol"]
+ * passengerCapacity : number
+ * color : string
+ * condition : "New" | "Used"
+ *
+ */
+
+/**
+ * User Data Structure
+ * name : string
+ * email : string
+ * password : string
+ * role : "admin" | "driver" | "customer"
+ * img : string
+ * rating : number
+ * rents : [Rent]
+ */
+
+/**
+ * Rent Data Structure
+ */
+
+// const rent = {
+//   user: {
+//     userId: "323d2b32e3232",
+//     currentLocation: "Dhaka",
+//     userTripRating: 4.5, //default 0
+//   },
+//   drivers: {
+//     driverTripRating: 4.5, //default 0
+//     bid: "323d2b32e3232",
+//   },
+//   car: "32983424fcecde3w94e032e40",
+//   rentStatus: "pending" || "ongoing" || "completed",
+//   startingPoint: "Dhaka",
+//   destination: "Chittagong",
+// };
+
+/**
+ * Bid Data Structure
+ */
+
+// const bid = {
+//   _id: "323d2b32e3232",
+//   rentId: "323d2b32e3232",
+//   bids: [
+//     {
+//       driverId: "323d2b32e3232",
+//       bidAmount: 1000,
+//       bidStatus: "accepted",
+//       driverLocation: "Dhaka",
+//     },
+//     {
+//       driverId: "323d2b32e3232",
+//       bidAmount: 1000,
+//       bidStatus: "pending",
+//       driverLocation: "Dhaka",
+//     },
+//     {
+//       driverId: "323d2b32e3232",
+//       bidAmount: 1000,
+//       bidStatus: "rejected",
+//       driverLocation: "Dhaka",
+//     },
+//   ],
+// };
+
+/**
+ * Rent Data Structure
+ * user : {
+ * userId : string
+ * userTripRating : number
+ * }
+ * driver : {
+ * userId : string
+ * driverTripRating : number}
+ * car : carId
+ */
