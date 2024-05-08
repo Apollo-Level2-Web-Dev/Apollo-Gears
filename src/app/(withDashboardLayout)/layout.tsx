@@ -1,11 +1,15 @@
 import React from "react";
+import { Layout } from "./components/layout/layout";
+import NavBar from "@/components/pages/shared/Navbar";
+import { Navbar } from "@nextui-org/react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <React.Fragment>
-      <div className="flex min-h-screen ">
-        <div className="min-w-72 h-screen bg-slate-100">SideBar</div>
-        <div>{children}</div>
+      <div className=" ">
+        <Layout>
+          <div>{children}</div>
+        </Layout>
       </div>
     </React.Fragment>
   );
