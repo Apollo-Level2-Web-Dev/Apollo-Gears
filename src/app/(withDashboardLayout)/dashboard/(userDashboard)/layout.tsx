@@ -1,17 +1,14 @@
-"use client"
 import React from "react";
 // import { Layout } from "./components/layout/layout";
-import { Layout } from "./layout/layout";
+import { UserLayout } from "./layout/userLayout";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-  
-      <div className=" ">
-        <Layout>
-          <div>{children}</div>
-        </Layout>
-      </div>
- 
+    <div className=" ">
+      <UserLayout>
+        <div>{children}</div>
+      </UserLayout>
+    </div>
   );
 };
 

@@ -1,23 +1,16 @@
-"use client";
-import React, { useState } from "react";
-// import { Layout } from "./components/layout/layout";
-import { SidebarContext } from "./layout-context";
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const handleToggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-  return (
-    <SidebarContext.Provider
-      value={{
-        collapsed: sidebarOpen,
-        setCollapsed: handleToggleSidebar,
-      }}
-    >
-      {children}
-    </SidebarContext.Provider>
-  );
+import type { Metadata } from "next";
+import DashboardLayout from "./layout/dashboardLayout";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "Book your next adventure with Apollo Gears.",
 };
 
-export default DashboardLayout;
+export default function RootLayout({ children }:{children:React.ReactNode}) {
+  return (
+    <div>
+      <DashboardLayout>{children}</DashboardLayout>
+    </div>
+  );
+}

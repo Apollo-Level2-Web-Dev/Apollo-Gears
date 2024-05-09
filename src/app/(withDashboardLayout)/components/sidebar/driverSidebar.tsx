@@ -4,11 +4,10 @@ import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { Sidebar } from "./sidebar.styles";
 
-
 import { Cog, Home } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { useSidebarContext } from "../../layout-context";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useSidebarContext } from "../../layout/layout-context";
 
 export const DriverSidebarWrapper = () => {
   const pathname = usePathname();
@@ -22,10 +21,13 @@ export const DriverSidebarWrapper = () => {
           collapsed: collapsed,
         })}
       >
-        <div className={Sidebar.Header()}> <Link className="flex" href="/">
-          <Cog />
-          <p className="font-bold text-inherit px-4">APOLLO GEARS</p>
-        </Link></div>
+        <div className={Sidebar.Header()}>
+          {" "}
+          <Link className="flex" href="/">
+            <Cog />
+            <p className="font-bold text-inherit px-4">APOLLO GEARS</p>
+          </Link>
+        </div>
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
             <SidebarItem

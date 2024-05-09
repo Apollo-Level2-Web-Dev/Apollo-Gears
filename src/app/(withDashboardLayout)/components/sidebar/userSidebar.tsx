@@ -6,7 +6,7 @@ import { Sidebar } from "./sidebar.styles";
 import { Car, Cog, DollarSign, History, Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSidebarContext } from "../../layout-context";
+import { useSidebarContext } from "../../layout/layout-context";
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();

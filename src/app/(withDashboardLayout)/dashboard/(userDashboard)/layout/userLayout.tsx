@@ -8,7 +8,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const Layout = ({ children }: Props) => {
+export const UserLayout = ({ children }: Props) => {
   return (
     <section className="flex">
       <SidebarWrapper></SidebarWrapper>

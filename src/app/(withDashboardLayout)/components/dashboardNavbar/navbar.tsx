@@ -2,7 +2,7 @@ import { Input, Navbar, NavbarContent } from "@nextui-org/react";
 import React from "react";
 
 import { ChevronLeft, Menu, SearchCheck } from "lucide-react";
-import { useSidebarContext } from "../../layout-context";
+import { useSidebarContext } from "../../layout/layout-context";
 import { UserDropdown } from "./user-dropdown";
 // import { useSidebarContext } from "../../dashboard/(userDashboard)/layout/layout-context";
 
