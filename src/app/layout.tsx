@@ -1,5 +1,3 @@
-import Footer from "@/components/pages/shared/Footer";
-import NavBar from "@/components/pages/shared/Navbar";
 import Providers from "@/lib/Providers";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -21,9 +19,7 @@ export default function RootLayout({
     >
       <body>
         <Providers>
-    
           <div className="mx-auto container">{children}</div>
-        
         </Providers>
       </body>
     </html>

@@ -1,10 +1,9 @@
-import { Avatar, Tooltip } from "@nextui-org/react";
 import { CollapseItems } from "./collapse-items";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { Sidebar } from "./sidebar.styles";
 
-import { Cog, Home } from "lucide-react";
+import { Car, Cog, DollarSign, History, Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebarContext } from "../../layout-context";
@@ -32,27 +31,27 @@ export const SidebarWrapper = () => {
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
             <SidebarItem
-              title="user"
+              title="Home"
               icon={<Home />}
-              isActive={pathname === "/"}
+              isActive={pathname === "/dashboard"}
               href="/dashboard"
             />
             <SidebarMenu title="Main Menu">
               <SidebarItem
-                isActive={pathname === "/accounts"}
-                title="Accounts"
-                icon={<Home />}
-                href="accounts"
+                isActive={pathname === "/dashboard/rent-car"}
+                title="rent-car"
+                icon={<Car />}
+                href="/dashboard/rent-car"
               />
               <SidebarItem
-                isActive={pathname === "/payments"}
+                isActive={pathname === "/dashboard/payments"}
                 title="Payments"
-                icon={<Home />}
+                icon={<DollarSign />}
               />
               <CollapseItems
-                icon={<Home />}
+                icon={<History />}
                 items={["Banks Accounts", "Credit Cards", "Loans"]}
-                title="Balances"
+                title="Rent history"
               />
               <SidebarItem
                 isActive={pathname === "/customers"}
@@ -71,24 +70,6 @@ export const SidebarWrapper = () => {
               />
             </SidebarMenu>
 
-            <SidebarMenu title="General">
-              <SidebarItem
-                isActive={pathname === "/developers"}
-                title="Developers"
-                icon={<Home />}
-              />
-              <SidebarItem
-                isActive={pathname === "/view"}
-                title="View Test Data"
-                icon={<Home />}
-              />
-              <SidebarItem
-                isActive={pathname === "/settings"}
-                title="Settings"
-                icon={<Home />}
-              />
-            </SidebarMenu>
-
             <SidebarMenu title="Updates">
               <SidebarItem
                 isActive={pathname === "/changelog"}
@@ -96,24 +77,6 @@ export const SidebarWrapper = () => {
                 icon={<Home />}
               />
             </SidebarMenu>
-          </div>
-          <div className={Sidebar.Footer()}>
-            <Tooltip content={"Settings"} color="primary">
-              <div className="max-w-fit">
-                <Home />
-              </div>
-            </Tooltip>
-            <Tooltip content={"Adjustments"} color="primary">
-              <div className="max-w-fit">
-                <Home />
-              </div>
-            </Tooltip>
-            <Tooltip content={"Profile"} color="primary">
-              <Avatar
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                size="sm"
-              />
-            </Tooltip>
           </div>
         </div>
       </div>

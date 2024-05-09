@@ -1,10 +1,9 @@
-import { Input, Link, Navbar, NavbarContent } from "@nextui-org/react";
+import { Input, Navbar, NavbarContent } from "@nextui-org/react";
 import React from "react";
 
-import { ChevronLeft, Cog, Menu, SearchCheck } from "lucide-react";
+import { ChevronLeft, Menu, SearchCheck } from "lucide-react";
 import { useSidebarContext } from "../../layout-context";
 import { UserDropdown } from "./user-dropdown";
-import { ThemeSwitcher } from "@/components/pages/shared/ThemeSwitcher";
 // import { useSidebarContext } from "../../dashboard/(userDashboard)/layout/layout-context";
 
 interface Props {
@@ -22,7 +21,6 @@ export const NavbarWrapper = ({ children }: Props) => {
           wrapper: "w-full max-w-full",
         }}
       >
-      
         <NavbarContent className="md:hidden">
           {collapsed ? (
             <ChevronLeft onClick={setCollapsed}></ChevronLeft>
@@ -46,12 +44,8 @@ export const NavbarWrapper = ({ children }: Props) => {
           justify="end"
           className="w-fit data-[justify=end]:flex-grow-0"
         >
-         
           <UserDropdown />
-          
-       
         </NavbarContent>
-        
       </Navbar>
       {children}
     </div>

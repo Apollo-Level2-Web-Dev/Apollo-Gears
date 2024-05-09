@@ -4,13 +4,13 @@ import { Layout } from "./layout/layout";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <React.Fragment>
+    
       <div className=" ">
         <Layout>
           <div>{children}</div>
         </Layout>
       </div>
-    </React.Fragment>
+    
   );
 };
 
