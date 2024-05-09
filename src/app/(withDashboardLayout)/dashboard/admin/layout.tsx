@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "./layout/driverLayout";
+import { Layout } from "./layout/adminLayout";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
