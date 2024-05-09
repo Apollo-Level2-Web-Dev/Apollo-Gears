@@ -9,11 +9,9 @@ import {
 import { Cog } from "lucide-react";
 import Link from "next/link";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { BurguerButton } from "./burguer-button";
 export default function NavBar() {
   return (
     <Navbar maxWidth="2xl">
-        
       <NavbarBrand>
         <Link className="flex" href="/">
           <Cog />
@@ -22,7 +20,6 @@ export default function NavBar() {
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-    
         <NavbarItem>
           <Link color="foreground" href="/cars">
             Cars
@@ -34,12 +31,14 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link  href="/dashboard">
-            Dashboard
-          </Link>
+          <Link href="/dashboard">Dashboard</Link>
         </NavbarItem>
+        
       </NavbarContent>
       <NavbarContent justify="end">
+      <NavbarItem>
+          <ThemeSwitcher />
+        </NavbarItem> 
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
         </NavbarItem>
@@ -48,9 +47,7 @@ export default function NavBar() {
             Sign Up
           </Button>
         </NavbarItem>
-        <NavbarItem>
-          <ThemeSwitcher />
-        </NavbarItem>
+       
       </NavbarContent>
     </Navbar>
   );

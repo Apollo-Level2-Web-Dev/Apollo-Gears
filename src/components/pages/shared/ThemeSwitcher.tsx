@@ -1,10 +1,9 @@
 // app/components/ThemeSwitcher.tsx
 "use client";
 
-import { Spinner } from "@nextui-org/react";
-import { Moon, Sun } from "lucide-react";
+import { Switch } from "@nextui-org/react";
 import { useTheme } from "next-themes";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -17,12 +16,9 @@ export function ThemeSwitcher() {
   if (!mounted) return null;
 
   return (
-    <div>
-      {theme === "dark" ? (
-        <Sun onClick={() => setTheme("light")} />
-      ) : (
-        <Moon onClick={() => setTheme("dark")} />
-      )}
-    </div>
+    <Switch
+      isSelected={theme === "dark" ? true : false}
+      onValueChange={(e) => setTheme(e ? "dark" : "light")}
+    />
   );
 }

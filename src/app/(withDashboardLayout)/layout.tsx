@@ -1,17 +1,22 @@
-import React from "react";
-import { Layout } from "./components/layout/layout";
-import NavBar from "@/components/pages/shared/Navbar";
-import { Navbar } from "@nextui-org/react";
+"use client";
+import React, { useState } from "react";
+// import { Layout } from "./components/layout/layout";
+import { SidebarContext } from "./layout-context";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const handleToggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
   return (
-    <React.Fragment>
-      <div className=" ">
-        <Layout>
-          <div>{children}</div>
-        </Layout>
-      </div>
-    </React.Fragment>
+    <SidebarContext.Provider
+      value={{
+        collapsed: sidebarOpen,
+        setCollapsed: handleToggleSidebar,
+      }}
+    >
+      {children}
+    </SidebarContext.Provider>
   );
 };
 

@@ -1,38 +1,36 @@
-import React from "react";
-import { Sidebar } from "./sidebar.styles";
 import { Avatar, Tooltip } from "@nextui-org/react";
-import { CompaniesDropdown } from "./companies-dropdown";
 import { CollapseItems } from "./collapse-items";
 import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
+import { Sidebar } from "./sidebar.styles";
 
-import { useSidebarContext } from "../layout/layout-context";
 
+import { Cog, Home } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { Home } from "lucide-react";
+import { useSidebarContext } from "../../layout-context";
+import Link from "next/link";
 
-export const SidebarWrapper = () => {
+export const DriverSidebarWrapper = () => {
   const pathname = usePathname();
-  const { collapsed,  } = useSidebarContext();
+  const { collapsed } = useSidebarContext();
 
   return (
     <aside className="h-screen z-[20] sticky top-0">
-      {collapsed ? (
-        <div className={Sidebar.Overlay()} />
-      ) : null}
+      {collapsed ? <div className={Sidebar.Overlay()} /> : null}
       <div
         className={Sidebar({
           collapsed: collapsed,
         })}
       >
-        <div className={Sidebar.Header()}>
-          {/* <CompaniesDropdown /> */}
-        </div>
+        <div className={Sidebar.Header()}> <Link className="flex" href="/">
+          <Cog />
+          <p className="font-bold text-inherit px-4">APOLLO GEARS</p>
+        </Link></div>
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
             <SidebarItem
-              title="Home"
-              icon={<Home/>}
+              title="driver"
+              icon={<Home />}
               isActive={pathname === "/"}
               href="/"
             />
