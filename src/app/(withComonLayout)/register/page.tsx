@@ -1,5 +1,6 @@
-import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react";
+import { Card, CardBody, CardHeader } from "@nextui-org/react";
 import { Cog } from "lucide-react";
+import SignUpForm from "./signUpForm";
 
 const RegisterPage = () => {
   return (
@@ -12,26 +13,7 @@ const RegisterPage = () => {
           </div>
         </CardHeader>
         <CardBody>
-          <form>
-            <Input type="text" label="Name" variant="bordered" />
-            <Input
-              className="mt-3"
-              type="email"
-              label="Email"
-              variant="bordered"
-            />
-            <Input
-              className="mt-3"
-              type="password"
-              label="Password"
-              variant="bordered"
-            />
-            <div className="flex justify-end ">
-              <Button color="primary" variant="flat" className="mt-3">
-                Submit
-              </Button>
-            </div>
-          </form>
+          <SignUpForm></SignUpForm>
         </CardBody>
       </Card>
     </div>
