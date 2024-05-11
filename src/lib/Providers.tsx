@@ -1,16 +1,22 @@
 "use client";
+import { refreshTokenGen } from "@/app/(withComonLayout)/actions/auth";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import React from "react";
+import { usePathname } from "next/navigation";
+import React, { useEffect } from "react";
 import { Toaster } from "sonner";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
+  const location = usePathname();
+
+  useEffect(() => {
+    refreshTokenGen();
+  }, [location]);
   return (
     <React.Fragment>
       <NextUIProvider>
-        {" "}
         <NextThemesProvider attribute="class" defaultTheme="dark">
-        <Toaster />
+          <Toaster />
           {children}
         </NextThemesProvider>
       </NextUIProvider>
