@@ -1,4 +1,5 @@
-import { ThemeSwitcher } from "@/components/pages/shared/ThemeSwitcher";
+// import { ThemeSwitcher } from "@/components/pages/shared/ThemeSwitcher";
+import { ThemeSwitcher } from "@/app/(withComonLayout)/components/pages/shared/ThemeSwitcher";
 import {
     Avatar,
     Dropdown,

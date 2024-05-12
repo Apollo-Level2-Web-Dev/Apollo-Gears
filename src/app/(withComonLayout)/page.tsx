@@ -1,5 +1,6 @@
-import Banner from "@/components/pages/home/Banner";
-import TopRatedCars from "@/components/pages/cars/TopRatedCars";
+import TopRatedCars from "./components/pages/cars/TopRatedCars";
+import Banner from "./components/pages/home/Banner";
+
 
 export default function Home() {
   return (

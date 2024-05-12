@@ -13,9 +13,9 @@ export async function loginUser(pre: FormData, formData: FormData) {
       },
       body: formattedData,
     });
-    const { data } = await res.json();
-    cookies().set("accessToken", data.accessToken);
-    cookies().set("refreshToken", data.refreshToken);
+    const  data = await res.json();
+    cookies().set("accessToken", data.data.accessToken);
+    cookies().set("refreshToken", data.data.refreshToken);
     return data;
   } catch (error) {
     throw error;
@@ -60,7 +60,7 @@ export async function refreshTokenGen() {
         );
         const { data } = await res.json();
         cookies().set("accessToken", data.accessToken);
-        // Set the new access token cookie
+      
       } catch (error) {
         throw error;
       }

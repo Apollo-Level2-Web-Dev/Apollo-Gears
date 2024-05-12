@@ -1,6 +1,7 @@
-import Footer from "@/components/pages/shared/Footer";
-import NavBar from "@/components/pages/shared/Navbar";
+
 import type { Metadata } from "next";
+import NavBar from "./components/pages/shared/Navbar";
+import Footer from "./components/pages/shared/Footer";
 
 
 export const metadata: Metadata = {
