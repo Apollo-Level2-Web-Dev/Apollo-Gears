@@ -5,6 +5,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 import { Toaster } from "sonner";
+import { AuthProvider } from "./AuthProviders";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   const location = usePathname();
@@ -17,7 +18,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       <NextUIProvider>
         <NextThemesProvider attribute="class" defaultTheme="dark">
           <Toaster />
-          {children}
+          <AuthProvider> {children}</AuthProvider>
         </NextThemesProvider>
       </NextUIProvider>
     </React.Fragment>

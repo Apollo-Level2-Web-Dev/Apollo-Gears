@@ -2,26 +2,29 @@
 // import ActionSubmitButton from "@/components/button/ActionSubmitButton";
 import { Input } from "@nextui-org/react";
 import { createRef, useEffect } from "react";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
 import { loginUser } from "../actions/auth";
 import ActionSubmitButton from "../components/button/ActionSubmitButton";
-import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-  const ref = createRef<HTMLFormElement>();
   const router = useRouter();
+  const ref = createRef<HTMLFormElement>();
   const [state, formAction] = useFormState(loginUser, null);
   useEffect(() => {
     if (state && state?.success) {
       toast.success(state?.message, { id: 1, duration: 2000 });
       ref.current!.reset();
-      router.push("/login");
+
+      window.location.href = "/";
     }
     if (state && !state?.success) {
       toast.error(state?.message, { id: 1, duration: 2000 });
     }
-  }, [state,ref]);
+  }, [state, ref]);
 
   return (
     <div>
@@ -34,6 +37,9 @@ export default function LoginForm() {
           label="Password"
           variant="bordered"
         />
+        <div className="flex justify-end text-primary">
+          <Link href="/register">if you dont have account sign Up</Link>
+        </div>
         <div className="flex justify-end ">
           <ActionSubmitButton />
         </div>

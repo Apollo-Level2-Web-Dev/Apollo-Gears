@@ -1,12 +1,12 @@
 "use client";
 import { Input } from "@nextui-org/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createRef, useEffect } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
 import { signUpUser } from "../actions/auth";
 import ActionSubmitButton from "../components/button/ActionSubmitButton";
-
 
 export default function SignUpForm() {
   const ref = createRef<HTMLFormElement>();
@@ -16,14 +16,13 @@ export default function SignUpForm() {
   useEffect(() => {
     if (state && state?.success) {
       toast.success("successfully signUp", { id: 1, duration: 2000 });
-      ref.current!.reset() 
-      router.push("/");
+      ref.current!.reset();
+      router.push("/login");
     }
     if (state && !state?.success) {
-      console.log(state);
       toast.error(state?.message, { id: 1, duration: 2000 });
     }
-  }, [router, state,ref]);
+  }, [router, state, ref]);
 
   return (
     <div>
@@ -43,6 +42,9 @@ export default function SignUpForm() {
           name="password"
           variant="bordered"
         />
+        <div className="flex justify-end text-primary">
+          <Link href="/login">already have account ?</Link>
+        </div>
         <div className="flex justify-end ">
           <ActionSubmitButton />
         </div>

@@ -1,4 +1,6 @@
 "use client";
+import { logOut } from "@/app/(withComonLayout)/actions/auth";
+import { useAuth } from "@/lib/AuthProviders";
 import {
   Button,
   Navbar,
@@ -8,8 +10,21 @@ import {
 } from "@nextui-org/react";
 import { Cog } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 export default function NavBar() {
+  const router = useRouter();
+  const { user, setUser } = useAuth();
+  const routeMap: Record<string, string> = {
+    user: "/dashboard",
+    admin: "/dashboard/admin",
+    driver: "/dashboard/driver",
+  };
+  const logOutUser = async () => {
+    await logOut();
+    setUser(null);
+    router.push("/");
+  };
   return (
     <Navbar maxWidth="2xl">
       <NavbarBrand>
@@ -31,23 +46,25 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/dashboard">Dashboard</Link>
+          {user && <Link href={routeMap[user?.role]}>Dashboard</Link>}
         </NavbarItem>
-        
       </NavbarContent>
       <NavbarContent justify="end">
-      <NavbarItem>
-          <ThemeSwitcher />
-        </NavbarItem> 
-        <NavbarItem className="hidden lg:flex">
-          <Link href="/login">Login</Link>
-        </NavbarItem>
         <NavbarItem>
-          <Button  as={Link} color="primary" href="/register" variant="flat">
-            Sign Up
-          </Button>
+          <ThemeSwitcher />
         </NavbarItem>
-       
+
+        {user ? (
+          <NavbarItem>
+            <Button onClick={logOutUser} color="primary" variant="flat">
+              Logout
+            </Button>
+          </NavbarItem>
+        ) : (
+          <NavbarItem className="hidden lg:flex">
+            <Link href="/login">Login</Link>
+          </NavbarItem>
+        )}
       </NavbarContent>
     </Navbar>
   );

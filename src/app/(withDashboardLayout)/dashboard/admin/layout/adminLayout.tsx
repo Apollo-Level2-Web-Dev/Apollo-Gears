@@ -2,7 +2,7 @@
 
 import { AdminSidebarWrapper } from "@/app/(withDashboardLayout)/components/sidebar/adminSidebar";
 import React from "react";
-import { NavbarWrapper } from "../../../components/dashboardNavbar/navbar";
+import { NavbarWrapper } from "../../../components/dashboardNavbar/dashboardNavbar";
 
 interface Props {
   children: React.ReactNode;
