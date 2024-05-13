@@ -4,7 +4,7 @@ import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { Sidebar } from "./sidebar.styles";
 
-import { Cog, Home } from "lucide-react";
+import { Car, Cog, Home, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebarContext } from "../../layout/layout-context";
@@ -38,19 +38,20 @@ export const AdminSidebarWrapper = () => {
             />
             <SidebarMenu title="Main Menu">
               <SidebarItem
-                isActive={pathname === "/accounts"}
-                title="Accounts"
-                icon={<Home />}
-                href="accounts"
+                isActive={pathname === "/dashboard/admin/cars-management"}
+                title="cars manage"
+                icon={<Car />}
+                href="/dashboard/admin/cars-management"
               />
               <SidebarItem
-                isActive={pathname === "/payments"}
-                title="Payments"
-                icon={<Home />}
+                isActive={pathname === "/dashboard/admin/users-management"}
+                title="users manage"
+                icon={<User />}
+                href="/dashboard/admin/users-management"
               />
               <CollapseItems
                 icon={<Home />}
-                items={["Banks Accounts", "Credit Cards", "Loans"]}
+                items={["Banks Accounts", "Credit Cards"]}
                 title="Balances"
               />
               <SidebarItem

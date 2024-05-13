@@ -2,26 +2,25 @@
 
 import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export async function loginUser(pre: FormData, formData: FormData) {
   try {
     const formattedData = JSON.stringify(Object?.fromEntries(formData));
     const res = await fetch("http://localhost:5000/api/v1/auth/login", {
       method: "POST",
-      cache:"no-cache",
+      cache: "no-cache",
       headers: {
         "Content-type": "application/json",
       },
       body: formattedData,
-    },);
+    });
     const data = await res.json();
-    if(data.success){
+    if (data.success) {
       cookies().set("accessToken", data.data.accessToken);
       cookies().set("refreshToken", data.data.refreshToken);
       return data;
     }
-    
+
     return data;
   } catch (error) {
     throw error;
@@ -78,12 +77,15 @@ export const userInfo = async () => {
   let decodedData = null;
   if (accessToken) {
     decodedData = (await jwtDecode(accessToken)) as any;
-    return { email: decodedData.email, role: decodedData.role};
+    return { email: decodedData.email, role: decodedData.role };
   } else {
     return null;
   }
 };
 export const logOut = async () => {
- cookies().delete("accessToken")
- cookies().delete("refreshToken")
+  cookies().delete("accessToken");
+  cookies().delete("refreshToken");
+};
+export const getCooke = async (cooke: string) => {
+  return cookies().get(cooke)?.value;
 };
