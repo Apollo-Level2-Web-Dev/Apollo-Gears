@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 export async function loginUser(pre: FormData, formData: FormData) {
   try {
     const formattedData = JSON.stringify(Object?.fromEntries(formData));
-    const res = await fetch("http://localhost:5000/api/v1/auth/login", {
+    const res = await fetch(`${process.env.serverUrl}/auth/login`, {
       method: "POST",
       cache: "no-cache",
       headers: {
@@ -29,7 +29,7 @@ export async function loginUser(pre: FormData, formData: FormData) {
 export async function signUpUser(pre: FormData, formData: FormData) {
   try {
     const formattedData = JSON.stringify(Object?.fromEntries(formData));
-    const res = await fetch("http://localhost:5000/api/v1/auth/register", {
+    const res = await fetch(`${process.env.serverUrl}/auth/register`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -53,16 +53,13 @@ export async function refreshTokenGen() {
     const isExpired = decodedData.exp - now <= buffer;
     if (isExpired) {
       try {
-        const res = await fetch(
-          "http://localhost:5000/api/v1/auth/refresh-token",
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-              Cookie: cookies().toString(),
-            },
-          }
-        );
+        const res = await fetch(`${process.env.serverUrl}/auth/refresh-token`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Cookie: cookies().toString(),
+          },
+        });
         const { data } = await res.json();
         cookies().set("accessToken", data.accessToken);
       } catch (error) {

@@ -31,10 +31,10 @@ export const AdminSidebarWrapper = () => {
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
             <SidebarItem
-              title="admin"
+              title="Home"
               icon={<Home />}
-              isActive={pathname === "/"}
-              href="/"
+              isActive={pathname === "/dashboard/admin"}
+              href="/dashboard/admin"
             />
             <SidebarMenu title="Main Menu">
               <SidebarItem

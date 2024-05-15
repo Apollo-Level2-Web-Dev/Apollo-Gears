@@ -12,9 +12,9 @@ import { Cog } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-export default function NavBar() {
+export default function NavBar({ user }: any) {
   const router = useRouter();
-  const { user, setUser } = useAuth();
+  const { setUser } = useAuth();
   const routeMap: Record<string, string> = {
     user: "/dashboard",
     admin: "/dashboard/admin",

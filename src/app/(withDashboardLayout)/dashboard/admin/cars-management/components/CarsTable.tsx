@@ -1,7 +1,11 @@
 "use client";
 import {
+  Button,
   Chip,
   ChipProps,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
   Table,
   TableBody,
   TableCell,
@@ -30,7 +34,7 @@ const columns = [
 
 export default function CarsTable({data}:any) {
   // console.log(data)
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen,onClose, onOpenChange } = useDisclosure();
   const renderCell = React.useCallback(
     (data:any, columnKey: React.Key) => {
       const cellValue = data[columnKey as any];
@@ -95,7 +99,12 @@ export default function CarsTable({data}:any) {
 
   return (
     <div>
-      <CarsModal isOpen={isOpen} onOpenChange={onOpenChange}></CarsModal>
+      <CarsModal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <ModalHeader className="flex flex-col gap-1">
+                Edit car
+              </ModalHeader>
+              
+      </CarsModal>
       <Table aria-label="Example table with custom cells">
         <TableHeader columns={columns}>
           {(column) => (

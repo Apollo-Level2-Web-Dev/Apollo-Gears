@@ -1,8 +1,13 @@
 import { cookies } from "next/headers";
 import CarsTable from "./components/CarsTable";
-
+import { Metadata } from "next";
+import AddCar from "./components/AddCar";
+export const metadata: Metadata = {
+  title: "cars",
+  description: " Apollo Gears.",
+};
 export default async function carsPage() {
-  const res = await fetch("http://localhost:5000/api/v1/cars", {
+  const res = await fetch(`${process.env.serverUrl}/cars?limit=200`, {
     next:{
       tags:["cars"],
       
@@ -15,7 +20,8 @@ export default async function carsPage() {
   // console.log(data)
   return (
     <div className="mx-6 mt-3">
-      <CarsTable data={data}></CarsTable>
+      <AddCar ></AddCar>
+      <CarsTable  data={data}></CarsTable>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) return <Switch/>;
 
   return (
     <Switch

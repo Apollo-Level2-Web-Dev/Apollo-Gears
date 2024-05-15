@@ -18,8 +18,8 @@ export default function LoginForm() {
     if (state && state?.success) {
       toast.success(state?.message, { id: 1, duration: 2000 });
       ref.current!.reset();
-
       window.location.href = "/";
+      // router.push("/")
     }
     if (state && !state?.success) {
       toast.error(state?.message, { id: 1, duration: 2000 });
