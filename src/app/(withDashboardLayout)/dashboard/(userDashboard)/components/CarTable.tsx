@@ -1,6 +1,11 @@
 "use client";
+import CarsModal from "@/app/(withDashboardLayout)/components/modal/CarsModal";
 import {
+  Button,
   Chip,
+  ChipProps,
+  ModalBody,
+  ModalFooter,
   ModalHeader,
   Table,
   TableBody,
@@ -12,9 +17,9 @@ import {
   User,
   useDisclosure,
 } from "@nextui-org/react";
-import { Edit, Eye, Trash } from "lucide-react";
+import { CarTaxiFront, Delete, DeleteIcon, Edit, Eye, LucideDelete, Trash } from "lucide-react";
 import React from "react";
-import CarsModal from "../../../../components/modal/CarsModal";
+
 const columns = [
   { name: "NAME", uid: "name" },
   { name: "Brand", uid: "brand" },
@@ -22,11 +27,17 @@ const columns = [
   { name: "ACTIONS", uid: "actions" },
 ];
 
-export default function CarsTable({ data }: any) {
+
+
+
+
+
+
+export default function CarsTable({data}:any) {
   // console.log(data)
-  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen,onClose, onOpenChange } = useDisclosure();
   const renderCell = React.useCallback(
-    (data: any, columnKey: React.Key) => {
+    (data:any, columnKey: React.Key) => {
       const cellValue = data[columnKey as any];
 
       switch (columnKey) {
@@ -43,6 +54,7 @@ export default function CarsTable({ data }: any) {
         case "brand":
           return (
             <div className="flex flex-col">
+   
               <p className="text-bold text-sm capitalize text-default-400">
                 {data.brand}
               </p>
@@ -62,21 +74,18 @@ export default function CarsTable({ data }: any) {
         case "actions":
           return (
             <div className="relative flex items-center gap-2">
-              <Tooltip content="Details">
+              <Tooltip content="Car Details">
                 <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                   <Eye />
                 </span>
               </Tooltip>
-              <Tooltip content="Edit user">
+              <Tooltip content="Request a car">
                 <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                  <Edit onClick={onOpen} />
+                
+                  <CarTaxiFront onClick={onOpen} />
                 </span>
               </Tooltip>
-              <Tooltip color="danger" content="Delete user">
-                <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                  <Trash />
-                </span>
-              </Tooltip>
+           
             </div>
           );
         default:
@@ -88,8 +97,8 @@ export default function CarsTable({ data }: any) {
 
   return (
     <div>
-      <CarsModal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalHeader className="flex flex-col gap-1">Edit car</ModalHeader>
+        <CarsModal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalHeader className="flex flex-col gap-1">Request a car </ModalHeader>
       </CarsModal>
       <Table aria-label="Example table with custom cells">
         <TableHeader columns={columns}>
@@ -103,7 +112,7 @@ export default function CarsTable({ data }: any) {
           )}
         </TableHeader>
         <TableBody items={data}>
-          {(item: any) => (
+          {(item:any) => (
             <TableRow key={item._id}>
               {(columnKey) => (
                 <TableCell>{renderCell(item, columnKey)}</TableCell>

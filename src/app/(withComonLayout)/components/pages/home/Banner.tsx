@@ -1,6 +1,9 @@
+
 import { Card, CardBody, Image } from "@nextui-org/react";
-import NextImage from "next/image";
+
+
 import BannerButton from "./BannerButton";
+import MotionCar from "./MotionCar";
 
 export default function Banner() {
   return (
@@ -18,16 +21,7 @@ export default function Banner() {
             </h4>
             <BannerButton />
           </div>
-          <div className="w-3/5 flex justify-end">
-            <Image
-              as={NextImage}
-              alt="Card background"
-              className="object-cover rounded-xl"
-              src="../../assets/hero-car.svg"
-              width={750}
-              height={750}
-            />
-          </div>
+          <MotionCar/>
         </div>
       </CardBody>
     </Card>

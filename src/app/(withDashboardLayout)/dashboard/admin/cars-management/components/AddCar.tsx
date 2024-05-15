@@ -1,7 +1,7 @@
 "use client";
 import { Button, ModalHeader, useDisclosure } from "@nextui-org/react";
+import CarsModal from "../../../../components/modal/CarsModal";
 import AddCarForm from "./AddCarFrom";
-import CarsModal from "./CarsModal";
 
 export default function AddCar() {
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
