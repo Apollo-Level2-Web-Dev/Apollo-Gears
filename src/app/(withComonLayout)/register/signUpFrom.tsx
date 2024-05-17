@@ -1,23 +1,25 @@
 "use client";
 import { Input } from "@nextui-org/react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { createRef, useEffect } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
 import { signUpUser } from "../action/authAction";
 import ActionSubmitButton from "../components/submitButton/ActionSubmitButton";
 
 const SignUpFrom = () => {
+  const ref = createRef<HTMLFormElement>();
   const [state, fromAction] = useFormState(signUpUser, null);
 
   useEffect(() => {
     if (state && state.success) {
       toast.success("successfully sign up");
+      ref.current?.reset();
     }
-  }, [state]);
+  }, [state, ref]);
   return (
     <div>
-      <form action={fromAction}>
+      <form ref={ref} action={fromAction}>
         <Input name="name" type="text" label="Name" variant="bordered" />
         <Input
           name="email"
