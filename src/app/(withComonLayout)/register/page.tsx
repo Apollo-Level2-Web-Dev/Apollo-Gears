@@ -12,7 +12,7 @@ const registerPage = () => {
           </div>
         </CardHeader>
         <CardBody>
-            <SignUpForm></SignUpForm>
+          <SignUpForm></SignUpForm>
         </CardBody>
       </Card>
     </div>

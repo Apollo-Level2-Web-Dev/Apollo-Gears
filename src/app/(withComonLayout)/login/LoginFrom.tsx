@@ -1,11 +1,10 @@
-import { Input } from '@nextui-org/react'
-import Link from 'next/link'
-import React from 'react'
+import { Input } from "@nextui-org/react";
+import Link from "next/link";
 
 export default function LoginFrom() {
   return (
     <div>
-        <form >
+      <form>
         <Input name="email" type="email" label="Email" variant="bordered" />
         <Input
           className="mt-3"
@@ -17,10 +16,8 @@ export default function LoginFrom() {
         <div className="flex justify-end text-primary">
           <Link href="/register">if you dont have account sign Up</Link>
         </div>
-        <div className="flex justify-end ">
-          {/* <ActionSubmitButton /> */}
-        </div>
+        <div className="flex justify-end ">{/* <ActionSubmitButton /> */}</div>
       </form>
     </div>
-  )
+  );
 }
