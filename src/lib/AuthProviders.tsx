@@ -10,6 +10,7 @@ export const AuthContext = createContext<any>({
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<any>(null);
+  
   const x = async () => {
     const res = await userInfo();
     setUser(res);

@@ -1,9 +1,10 @@
 "use client";
 
 import { Button, Spinner } from "@nextui-org/react";
+import { ReactNode } from "react";
 import { useFormStatus } from "react-dom";
 
-export default function ActionSubmitButton() {
+export default function ActionSubmitButton({children}:{children:ReactNode}) {
   const { pending } = useFormStatus();
   return (
     <Button
@@ -11,9 +12,9 @@ export default function ActionSubmitButton() {
       type="submit"
       color="primary"
       variant="flat"
-      className="mt-3"
+     
     >
-      {pending ? <Spinner /> : "Submit"}
+      {pending ? <Spinner /> : children}
     </Button>
   );
 }

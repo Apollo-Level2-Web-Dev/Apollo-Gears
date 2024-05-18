@@ -1,11 +1,7 @@
 "use client";
-import CarsModal from "@/app/(withDashboardLayout)/components/modal/CarsModal";
+import CustomModal from "@/app/(withDashboardLayout)/components/modal/CustomModal";
 import {
-  Button,
   Chip,
-  ChipProps,
-  ModalBody,
-  ModalFooter,
   ModalHeader,
   Table,
   TableBody,
@@ -17,8 +13,9 @@ import {
   User,
   useDisclosure,
 } from "@nextui-org/react";
-import { CarTaxiFront, Delete, DeleteIcon, Edit, Eye, LucideDelete, Trash } from "lucide-react";
-import React from "react";
+import { CarTaxiFront, Eye } from "lucide-react";
+import React, { useState } from "react";
+import RequestCarForm from "./ReaquestCarFrom";
 
 const columns = [
   { name: "NAME", uid: "name" },
@@ -27,17 +24,16 @@ const columns = [
   { name: "ACTIONS", uid: "actions" },
 ];
 
-
-
-
-
-
-
-export default function CarsTable({data}:any) {
+export default function CarsTable({ data }: any) {
   // console.log(data)
-  const { isOpen, onOpen,onClose, onOpenChange } = useDisclosure();
+  const [carId, setCarId] = useState("");
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
+  const handleCarRequest = (id: any) => {
+    onOpen();
+    setCarId(id);
+  };
   const renderCell = React.useCallback(
-    (data:any, columnKey: React.Key) => {
+    (data: any, columnKey: React.Key) => {
       const cellValue = data[columnKey as any];
 
       switch (columnKey) {
@@ -54,7 +50,6 @@ export default function CarsTable({data}:any) {
         case "brand":
           return (
             <div className="flex flex-col">
-   
               <p className="text-bold text-sm capitalize text-default-400">
                 {data.brand}
               </p>
@@ -81,11 +76,9 @@ export default function CarsTable({data}:any) {
               </Tooltip>
               <Tooltip content="Request a car">
                 <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                
-                  <CarTaxiFront onClick={onOpen} />
+                  <CarTaxiFront onClick={() => handleCarRequest(data._id)} />
                 </span>
               </Tooltip>
-           
             </div>
           );
         default:
@@ -97,9 +90,10 @@ export default function CarsTable({data}:any) {
 
   return (
     <div>
-        <CarsModal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalHeader className="flex flex-col gap-1">Request a car </ModalHeader>
-      </CarsModal>
+      <CustomModal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalHeader className="flex flex-col gap-1">Request a car</ModalHeader>
+        <RequestCarForm onClose={onClose} carId={carId}></RequestCarForm>
+      </CustomModal>
       <Table aria-label="Example table with custom cells">
         <TableHeader columns={columns}>
           {(column) => (
@@ -112,7 +106,7 @@ export default function CarsTable({data}:any) {
           )}
         </TableHeader>
         <TableBody items={data}>
-          {(item:any) => (
+          {(item: any) => (
             <TableRow key={item._id}>
               {(columnKey) => (
                 <TableCell>{renderCell(item, columnKey)}</TableCell>

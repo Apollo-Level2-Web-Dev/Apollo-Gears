@@ -128,7 +128,7 @@ export default function AddCarForm({ onClose }: any) {
         />
 
         <div className="flex justify-end ">
-          <ActionSubmitButton />
+          <ActionSubmitButton>add</ActionSubmitButton>
         </div>
       </form>
     </div>

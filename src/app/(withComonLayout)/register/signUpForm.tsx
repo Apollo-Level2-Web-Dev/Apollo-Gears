@@ -45,8 +45,8 @@ export default function SignUpForm() {
         <div className="flex justify-end text-primary">
           <Link href="/login">already have account ?</Link>
         </div>
-        <div className="flex justify-end ">
-          <ActionSubmitButton />
+        <div className="flex justify-end mt-3">
+          <ActionSubmitButton>signUp</ActionSubmitButton>
         </div>
       </form>
     </div>

@@ -74,7 +74,8 @@ export const userInfo = async () => {
   let decodedData = null;
   if (accessToken) {
     decodedData = (await jwtDecode(accessToken)) as any;
-    return { email: decodedData.email, role: decodedData.role };
+   
+    return { email: decodedData.email, role: decodedData.role ,id: decodedData.id};
   } else {
     return null;
   }

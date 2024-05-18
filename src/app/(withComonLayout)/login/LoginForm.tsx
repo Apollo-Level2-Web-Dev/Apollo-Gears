@@ -40,8 +40,8 @@ export default function LoginForm() {
         <div className="flex justify-end text-primary">
           <Link href="/register">if you dont have account sign Up</Link>
         </div>
-        <div className="flex justify-end ">
-          <ActionSubmitButton />
+        <div className="flex justify-end mt-3">
+          <ActionSubmitButton>login</ActionSubmitButton>
         </div>
       </form>
     </div>

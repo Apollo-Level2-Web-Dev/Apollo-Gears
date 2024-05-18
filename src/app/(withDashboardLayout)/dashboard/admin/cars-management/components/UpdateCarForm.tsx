@@ -34,11 +34,15 @@ const conditions = [
 ];
 
 export default function UpdateCarForm({ onClose, data }: any) {
-  const [state, formAction] = useFormState(updateCar, data._id);
+  const [state, formAction] = useFormState(
+    updateCar.bind(null, data._id),
+    null
+  );
 
   useEffect(() => {
     if (state && state?.success) {
-      toast.success(state?.message, { id: 1, duration: 2000 });
+      console.log(state);
+      toast.success(state.message, { id: 1, duration: 2000 });
       onClose();
     }
     if (state && !state?.success) {
@@ -130,7 +134,7 @@ export default function UpdateCarForm({ onClose, data }: any) {
         />
 
         <div className="flex justify-end ">
-          <ActionSubmitButton />
+          <ActionSubmitButton>update</ActionSubmitButton>
         </div>
       </form>
     </div>

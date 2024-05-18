@@ -1,5 +1,7 @@
 "use client";
+import ActionSubmitButton from "@/app/(withComonLayout)/components/button/ActionSubmitButton";
 import {
+  Button,
   Chip,
   ModalHeader,
   Table,
@@ -14,8 +16,8 @@ import {
 } from "@nextui-org/react";
 import { Edit, Eye, Trash } from "lucide-react";
 import React, { useState } from "react";
-import CarsModal from "../../../../components/modal/CarsModal";
-import AddCarForm from "./AddCarFrom";
+import CustomModal from "../../../../components/modal/CustomModal";
+import { deleteCar } from "../../adminAction/action";
 import UpdateCarForm from "./UpdateCarForm";
 const columns = [
   { name: "NAME", uid: "name" },
@@ -25,12 +27,21 @@ const columns = [
 ];
 
 export default function CarsTable({ data }: any) {
-  const [selected,setSelected]= useState({})
-  const handleUpdate = (data:any) => {
+  const [selected, setSelected] = useState<any>(null);
+  const [action, setAction] = useState("");
+
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
+
+  const handleUpdate = (data: any) => {
+    setAction("update");
     onOpen();
     setSelected(data);
   };
-  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
+  const handleDelete = (id: string) => {
+    setAction("delete");
+    onOpen();
+    setSelected(id);
+  };
   const renderCell = React.useCallback(
     (data: any, columnKey: React.Key) => {
       const cellValue = data[columnKey as any];
@@ -80,7 +91,7 @@ export default function CarsTable({ data }: any) {
               </Tooltip>
               <Tooltip color="danger" content="Delete user">
                 <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                  <Trash />
+                  <Trash onClick={() => handleDelete(data._id)} />
                 </span>
               </Tooltip>
             </div>
@@ -91,13 +102,39 @@ export default function CarsTable({ data }: any) {
     },
     [onOpen]
   );
-
   return (
     <div>
-      <CarsModal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalHeader className="flex flex-col gap-1">Edit car</ModalHeader>
-        <UpdateCarForm data={selected}></UpdateCarForm>
-      </CarsModal>
+      <CustomModal
+        size={`${action === "update" ? "3xl" : "xs"}`}
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
+        {action === "update" && (
+          <div>
+            <ModalHeader className="flex flex-col gap-1">Edit car</ModalHeader>
+            <UpdateCarForm onClose={onClose} data={selected}></UpdateCarForm>
+          </div>
+        )}
+        {action === "delete" && (
+          <div>
+            <ModalHeader className="flex flex-col gap-1">
+              Delete car
+              <div className="flex space-x-4 justify-center items-center mt-4">
+                <Button onClick={() => onClose()} color="primary">
+                  Cancel
+                </Button>
+                <form
+                  action={async () => {
+                    await deleteCar(selected), onClose();
+                  }}
+                >
+                  <ActionSubmitButton>delete</ActionSubmitButton>
+                </form>
+              </div>
+            </ModalHeader>
+          </div>
+        )}
+      </CustomModal>
       <Table aria-label="Example table with custom cells">
         <TableHeader columns={columns}>
           {(column) => (
