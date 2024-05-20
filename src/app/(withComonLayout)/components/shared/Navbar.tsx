@@ -1,7 +1,6 @@
 "use client";
 
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
-import { useAuth } from "@/lib/AuthProviders";
 import {
   Button,
   Navbar,
@@ -11,15 +10,24 @@ import {
 } from "@nextui-org/react";
 import { Cog } from "lucide-react";
 import Link from "next/link";
+import { logOut } from "../../action/authAction";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/AuthProviders";
 
-export default function NavBar({user}:any) {
+export default function NavBar({ user }: any) {
+  const {setUser}= useAuth()
+  const router = useRouter()
+  const routeMap: Record<string, string> = {
+    user: "/dashboard",
+    admin: "/dashboard/admin",
+    driver: "/dashboard/driver",
+  };
 
-
-const routeMap: Record<string,string> ={
-  user:"/dashboard",
-  admin:"/dashboard/admin",
-  driver:"/dashboard/driver"
-}
+  const handleLogOut = async() => {
+    await logOut()
+    setUser(null)
+    router.push("/")
+  };
   return (
     <Navbar maxWidth="2xl">
       <NavbarBrand>
@@ -41,21 +49,24 @@ const routeMap: Record<string,string> ={
           </Link>
         </NavbarItem>
         <NavbarItem>
-      {user&&     <Link href={routeMap[user?.role]}>Dashboard</Link>}
+          {user && <Link href={routeMap[user?.role]}>Dashboard</Link>}
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
           <ThemeSwitcher />
         </NavbarItem>
-        <NavbarItem>
-          <Button color="primary" variant="flat">
-            Logout
-          </Button>
-        </NavbarItem>
-        <NavbarItem className="hidden lg:flex">
-          <Link href="/login">Login</Link>
-        </NavbarItem>
+        {user ? (
+          <NavbarItem>
+            <Button onClick={handleLogOut} color="primary" variant="flat">
+              Logout
+            </Button>
+          </NavbarItem>
+        ) : (
+          <NavbarItem className="hidden lg:flex">
+            <Link href="/login">Login</Link>
+          </NavbarItem>
+        )}
       </NavbarContent>
     </Navbar>
   );

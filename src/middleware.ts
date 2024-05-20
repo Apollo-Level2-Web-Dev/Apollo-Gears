@@ -21,7 +21,7 @@ export async function middleware(request: NextRequest) {
   }
 
   let decodedData =null;
-  decodedData = jwtDecode(accessToken);
+  decodedData = jwtDecode(accessToken) ;
   const role = decodedData?.role
   if(role && roleBasedPrivateRoutes[role as Role] ){
     const routes =roleBasedPrivateRoutes[role as Role]
