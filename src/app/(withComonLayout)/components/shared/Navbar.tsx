@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { useAuth } from "@/lib/AuthProviders";
 import {
   Button,
   Navbar,
@@ -11,7 +12,14 @@ import {
 import { Cog } from "lucide-react";
 import Link from "next/link";
 
-export default function NavBar({ user }: any) {
+export default function NavBar({user}:any) {
+
+
+const routeMap: Record<string,string> ={
+  user:"/dashboard",
+  admin:"/dashboard/admin",
+  driver:"/dashboard/driver"
+}
   return (
     <Navbar maxWidth="2xl">
       <NavbarBrand>
@@ -33,7 +41,7 @@ export default function NavBar({ user }: any) {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/dashboard">Dashboard</Link>
+      {user&&     <Link href={routeMap[user?.role]}>Dashboard</Link>}
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">

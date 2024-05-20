@@ -39,7 +39,7 @@ const SignUpFrom = () => {
           <Link href="/login">already have account ?</Link>
         </div>
         <div className="flex justify-end "></div>
-        <ActionSubmitButton></ActionSubmitButton>
+        <ActionSubmitButton>sign up</ActionSubmitButton>
       </form>
     </div>
   );
