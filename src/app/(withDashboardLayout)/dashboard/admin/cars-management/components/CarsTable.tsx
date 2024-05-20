@@ -100,7 +100,7 @@ export default function CarsTable({ data }: any) {
           return cellValue;
       }
     },
-    [onOpen]
+    []
   );
   return (
     <div>
